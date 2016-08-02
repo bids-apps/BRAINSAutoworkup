@@ -16,15 +16,19 @@ RUN mkdir -p /code \
 RUN apt-get install -y build-essential \
  && apt-get install -y cmake \
  && apt-get install -y cmake-curses-gui \
- && apt-get install -y git \
+ && apt-get install -y apt-utils \
+ && apt-get install -y git
  
-RUN apt-get install -y libtbb-dev
+RUN export DEBIAN_FRONTEND=noninteractive \
+ && apt-get install -y libtbb-dev tbb-examples libtbb-doc libtbb2 \
+ && unset DEBIAN_FRONTEND
 
-RUN apt-get install -y python \
- && apt-get install -y python-pip \
- && pip install nibabel \
- && pip install nipype[all]
+RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
+    wget --quiet https://repo.continuum.io/archive/Anaconda2-4.1.1-Linux-x86_64.sh -O ~/anaconda.sh && \
+    /bin/bash ~/anaconda.sh -b -p /opt/conda && \
+    rm ~/anaconda.sh
+
+# Install packages needed for VTK & ITK
+RUN apt-get install -y libglu1-mesa-dev freeglut3-dev mesa-common-dev
 
 
-#-- COPY run.py /code/run.py
-#-- ENTRYPOINT ["/code/run.py"]
