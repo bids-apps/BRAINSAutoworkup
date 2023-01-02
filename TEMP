@@ -18,7 +18,7 @@ RUN apt-get install -y build-essential \
  && apt-get install -y cmake-curses-gui
 
 # && apt-get install -y git
- 
+
 RUN apt-get install -y libtbb-dev
 
 RUN apt-get install -y python \
@@ -37,4 +37,3 @@ RUN export DEBIAN_FRONTEND=noninteractive \
  && pip install nipype \
  && pip install pandas \
  && unset DEBIAN_FRONTEND
-

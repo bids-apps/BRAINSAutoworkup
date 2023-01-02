@@ -1,6 +1,6 @@
 ## An BIDS App for running BRAINSAutoWorkup
 ## \author Hans J. Johnson
-## 
+##
 
 Every BIDS App needs to follow a minimal set of command arguments common across
 all of the Apps. This allows users and developers to easily use and integrate

@@ -18,7 +18,7 @@ RUN apt-get install -y build-essential \
  && apt-get install -y cmake-curses-gui \
  && apt-get install -y apt-utils \
  && apt-get install -y git
- 
+
 RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get install -y libtbb-dev tbb-examples libtbb-doc libtbb2 \
  && unset DEBIAN_FRONTEND
@@ -30,5 +30,3 @@ RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
 
 # Install packages needed for VTK & ITK
 RUN apt-get install -y libglu1-mesa-dev freeglut3-dev mesa-common-dev
-
-
